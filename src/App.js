@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense, lazy } from "react";
+import "../src/styles/main.scss";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { BrowserRouter } from "react-router-dom";
+
+// Lazy load the AppRouter component
+const AppRouter = lazy(() => import("./AppRouter"));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter
+      basename={process.env.NODE_ENV === "production" ? "/triptopia" : "/"}
+    >
+      {/* Suspense provides a fallback UI while AppRouter is loading */}
+      <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
+        <AppRouter />
+      </Suspense>
+    </BrowserRouter>
   );
 }
 

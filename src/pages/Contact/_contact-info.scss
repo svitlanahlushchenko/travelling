@@ -1,0 +1,41 @@
+@use "../../styles/utils/variables" as *;
+.contact-section {
+  display: flex;
+  padding: 120px 0;
+  gap: 130px;
+  @media (max-width: $bp-tablet) {
+    padding: 60px 0;
+    flex-direction: column;
+    gap: 60px;
+  }
+  &__quote {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.1;
+    background-color: $light-blue;
+    padding: 24px 32px;
+    color: $dark-title;
+    margin: 4px 0;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding-bottom: 32px;
+  }
+  &__list-item {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  &__icon {
+    fill: $dark-title;
+    width: 18px;
+    height: 18px;
+    transform: rotate(90deg);
+  }
+  &__list-text{
+    font-weight: 500;
+    font-size: 18px;
+  }
+}
